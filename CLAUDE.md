@@ -21,8 +21,11 @@ This is a Next.js 15 application with TypeScript and Tailwind CSS, using the App
 # Note: If npm cache issues occur, use:
 npm install --cache /tmp/npm-cache-temp
 
-# Run development server (with Turbopack)
+# Run development server
 npm run dev
+
+# Run development server with Turbopack (if needed)
+npm run dev:turbo
 
 # Build for production
 npm run build
@@ -69,6 +72,30 @@ import Component from '@/components/Component'
 - CSS variables for theming: `--background` and `--foreground`
 - Dark mode support via `prefers-color-scheme`
 
+## AWS Amplify Gen 2 Integration
+
+This project is configured for deployment on AWS Amplify Gen 2 with:
+
+### Backend Services
+- **Authentication**: AWS Cognito with email/password login
+- **Data**: GraphQL API with real-time subscriptions
+- **Authorization**: Owner-based data access control
+
+### Local Development with Cloud Backend
+```bash
+# Start cloud backend sandbox (generates amplify_outputs.json)
+npx ampx sandbox
+
+# Start frontend development server
+npm run dev
+```
+
+### Key Files
+- `amplify/` - Backend configuration (auth, data, functions)
+- `src/app/amplify-provider.tsx` - Client-side Amplify configuration
+- `amplify.yml` - Build configuration for Amplify hosting
+- `amplify_outputs.json` - Generated backend connection details (gitignored)
+
 ## Development Guidelines
 
 ### Creating New Pages
@@ -89,3 +116,10 @@ Place reusable components in `src/components/` directory.
 - Type definitions are in `tsconfig.json`
 - Next.js auto-generates types in `.next/types/` during dev
 - Use `next-env.d.ts` for Next.js type references
+- Amplify generates types for GraphQL schema in `amplify/data/resource.ts`
+
+### Amplify Development
+- Modify backend in `amplify/` directory
+- Use TypeScript for backend configuration
+- Authentication state managed by Amplify Authenticator
+- GraphQL client auto-configured for authenticated requests
