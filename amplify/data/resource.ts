@@ -5,7 +5,6 @@ const schema = a.schema({
     .model({
       content: a.string(),
       done: a.boolean(),
-      priority: a.enum(['low', 'medium', 'high']),
     })
     .authorization((allow) => [allow.owner()]),
 });
