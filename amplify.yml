@@ -26,4 +26,4 @@ frontend:
       - .next/cache/**/*
   env:
     variables:
-      AMPLIFY_MONOREPO_APP_ROOT: '.'
+      AMPLIFY_MONOREPO_APP_ROOT: '.' 
