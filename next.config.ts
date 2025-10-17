@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: '*.amplifyapp.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
     ],
   },
   // Enable standalone output for better performance
